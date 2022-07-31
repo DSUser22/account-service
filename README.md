@@ -7,6 +7,7 @@
 ------------------------------------------------------------------------------------------------------
 1. Создать сервис со следующим интерфейсом:
 ------------------------------------------------------------------------------------------------------
+```
 public interface AccountService
 {
 /**
@@ -24,6 +25,7 @@ Long getAmount(Integer id);
      */
     void addAmount(Integer id, Long value);
 }
+```
 
 Сервис будет работать в высоконагруженной отказоустойчивой системе.
 
@@ -44,7 +46,7 @@ Long getAmount(Integer id);
 Одновременно можно запускать несколько тестовых клиентов на одном или разных компьютерах.
 
 ------------------------------------------------------------------------------------------------------
-3. Получить стаистику обработки запросов на сервере AccountService'ом
+3. Получить статистику обработки запросов на сервере AccountService'ом
 ------------------------------------------------------------------------------------------------------
 Для каждого из двух методов AccountService'а (getAmount, addAmount) нужно получить
 - кол-во запросов обрабатываемых в единицу времени на сервере (!!! не на клиенте)
@@ -64,7 +66,7 @@ Long getAmount(Integer id);
 
 **Тестовый клиент** : Apache HttpClient
 
-<h3> Компиляция </h3>
+<h3> Компиляция и упаковка</h3>
 
 ```
 mvn package
@@ -86,7 +88,8 @@ java -jar path/to/target/account-service-0.0.1-SNAPSHOT.jar
 
 
 <h3> Запуск тестового клиента </h3>
-<sub>Аргумены: rCount, wCount, idStart, idEnd, maxValue, где idStart и idEnd - начало и конец диапазона ключей и maxValue - максимальное значение value</sub>
+
+Аргумены: rCount, wCount, idStart, idEnd, maxValue, где idStart и idEnd - начало и конец диапазона ключей и maxValue - максимальное значение value
 
 ```
 java -сp path/to/target/account-service-0.0.1-SNAPSHOT.jar -Dloader.main=dsuser22.accountservice.client.Client org.springframework.boot.loader.PropertiesLauncher rCount wCount idStart idEnd maxValue
